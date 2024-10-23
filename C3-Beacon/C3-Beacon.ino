@@ -51,6 +51,7 @@ const int cTXPin = 6;                                 // GPIO for TX1
 const int cRXPin = 7;                                 // GPIO for RX1 (assigned, but unused)
 const int cLEDPin = 8;                                // built-in LED (ON on LOW)
 const int cLimitSwitchPin = 9;                        // GPIO for limit switch input (active LOW)
+const int cLimitSwitchGndPin = 10;                    // GPIO used as ground for limit switch
 const int cFreq = 38000;                              // carrier frequency in Hz
 const int cNumBytes = 1;                              // number of bytes to transmit in a burst
 const int cBurstSpacing = 100;                        // milliseconds between bursts
@@ -68,6 +69,8 @@ boolean carrierState = true;                          // 0 = LOW; 1 = HIGH
 void setup() {
   pinMode(cVCCPin, INPUT);                            // Configure voltage monitoring pin as input
   pinMode(cLimitSwitchPin, INPUT_PULLUP);             // Configure limit switch input
+  pinMode(cLimitSwitchGndPin, OUTPUT);                // Configure limit switch ground pin
+  digitalWrite(cLimitSwitchGndPin, LOW);              // Set limit switch ground reference
   pinMode(cLEDPin, OUTPUT);                           // Configure built-in LED pin as output
   pinMode(cCarrierPin, OUTPUT);                       // Configure carrier pin as output
   pinMode(cTXPin, OUTPUT);                            // Configure TX pin as output
