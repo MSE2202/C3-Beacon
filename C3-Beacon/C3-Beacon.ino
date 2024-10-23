@@ -1,10 +1,10 @@
 /*
- *  MSE 2202 ESP-C3 Beacon Code
+ *  MSE 2202 ESP32-C3 Beacon Code
  *
  *  Language: Arduino (C++)
  *  Target:   ESP32-C3
  *  Author:   Michael Naish
- *  Date:     2024 10 21
+ *  Date:     2024 10 23
  *
  *  This program is used by the beacon to transmit the ASCII character "U" at 2400 baud (this can be 
  *  changed in cTXData). At 2400 baud, each bit is ~417 usec.
@@ -65,7 +65,6 @@ const float cDutyCycle = 0.5;                         // duty cycle of carrier (
 // Variables
 uint32_t nextBurst;                                   // time of next tranmission burst
 uint32_t restartTime;                                 // time to restart transmission after deactivation
-hw_timer_t * pTimer = NULL;                           // pointer to timer used by timer interrupt
 bool runState = true;                                 // 0 = stopped; 1 = running
 
 void setup() {
@@ -105,7 +104,7 @@ void loop() {
   // transmit character(s) periodically
   if (curTime - nextBurst < cBurstSpacing) {          // wait number of milliseconds to next burst
     if (runState) {                                   // if transmission is active
-      for (int i = 0; i < cNumBytes; i++) {           
+      for (uint16_t i = 0; i < cNumBytes; i++) {           
         Serial1.write(cTXData);                       // load UART1 TX FIFO buffer with data
       }
       digitalWrite(cLEDPin, !digitalRead(cLEDPin));   // toggle built-in LED
