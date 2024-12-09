@@ -36,7 +36,7 @@
  *
  *  Required settings for USB serial output to function properly (In Tools menu)
  *   USB CDC on Boot: Enabled
- *   JTAG Adapter: Integrated USB JTAG
+ *   JTAG Adapter: Disabled
  *
  */
 
