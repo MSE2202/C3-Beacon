@@ -33,7 +33,9 @@
  *  If necessary, power consumption can be increased by enabling the onboard WiFi peripheral and
  *  periodically scanning for networks. This may be required to keep some rechargable batteries
  *  from turning off due to insufficient load.
- *   
+ *  
+ *  Board: ESP32C3 Dev Module 
+ *
  *  Required settings for USB serial output to function properly (In Tools menu)
  *   USB CDC on Boot: Enabled
  *
